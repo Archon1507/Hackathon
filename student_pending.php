@@ -11,10 +11,24 @@
     .navbar{
       position: sticky;
     }
+    
   </style>
 </head>
 
-<body>
+<body onload="validity()">
+
+<script>
+    function validity()
+    {
+      var dt=new Date();
+      
+      if(dt.getDay()==6 || dt.getDay()==0)
+        {document.getElementById("up").disabled=true;
+        document.getElementById("sub").disabled=true;
+      }
+    }  
+
+</script>
 
 
 <nav class="navbar navbar-inverse">
@@ -50,8 +64,16 @@
       </tr>
     </tbody>
   </table>
+  
 
-<form action="" method="POST" enctype="multipart/form-data">
+<script type="text/javascript">
+  document.getElementById("topic").innerHTML=<?>;
+  document.getElementById("dsc").innerHTML=<?>;
+</script>
+
+
+
+<form action="upload.php" method="Post">
 
   <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
@@ -67,46 +89,29 @@
           <div class="modal-footer">
               <div class="row">
                   <div class="col-sm-2">
-                      <input type="file" class="btn btn-default" name="my_file">
-
+                      <input type="file" class="btn btn-default" id="up"></button>
+                      
                   </div>
                   
               </div>
-              
-              <button type="submit" class="btn btn-default" id="sub">Submit</button>
+              <img id="wait" src="wait.gif" style="display: none;">
+              <button type="submit" class="btn btn-default" id="sub" onclick="showWait()">Submit</button>
           </div>
         </div>
       </div>
     </div>
   </form>
 </div>
-<?php
-   if(isset($_FILES['my_file'])){
 
-      $errors= array();
-      $file_name = $_FILES['my_file']['name'];
-      $file_size =$_FILES['my_file']['size'];
-      $file_tmp =$_FILES['my_file']['tmp_name'];
-      $file_type=$_FILES['my_file']['type'];
-      $file_ext=strtolower(end(explode('.',$_FILES['my_file']['name'])));
-      
-      $expensions= array("txt","pdf","c");
-      
-      if(in_array($file_ext,$expensions)=== false){
-         $errors[]="extension not allowed, please choose a JPEG or PNG file.";
-      }
-      
-      if($file_size > 2097152){
-         $errors[]='File size less be excately 2 MB';
-      }
-      
-      if(empty($errors)==true){
-         move_uploaded_file($file_tmp,"files/".$file_name);
-      }else{
-         print_r($errors);
-      }
-   }
 
-?>
+<script >
+	function showWait() {
+		document.getElementById("wait").style="display:inline; height: 5%; width: 5%;position: relative;";
+	}
+	function hideWait(){
+		document.getElementById("wait").style="display:none";
+	}
+</script>
+
 </body>
 </html>
