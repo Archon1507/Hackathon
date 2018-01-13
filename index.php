@@ -72,7 +72,7 @@ color:white;
     	<br>
     	<label>OR</label>
     	<br>
-    	<a href="signup.html">
+    	<a href="signup.php">
       <button type="button" class="btn btn-default" id="signup" href="signup.html">Sign Up</button>
       </a>
     </div>
