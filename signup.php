@@ -15,7 +15,7 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <div class="navbar-brand" ><a href="index.html">The Rising Institute</a></div>
+      <div class="navbar-brand" ><a href="index.php">The Rising Institute</a></div>
     </div>
     <ul class="nav navbar-nav">
       <li style="padding-left: 20px"><a>Sign UP</a></li>
